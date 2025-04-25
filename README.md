@@ -72,6 +72,8 @@ Return n */
 `"cross_page_history_revision_edit_warning":"暂不支持历史版本跨页面编辑"` 自 en-us 移至 zh-cn。
 
 ``` diff
+- "wikiplus_settings_placeholder":"Your setting is empty, please modify your setting according to the documentation."
++ "wikiplus_settings_placeholder":"Your settings are empty. Please modify them according to the documentation."
 + "cross_page_history_revision_edit_warning":"Cross-page edit in history revision is not supported yet"
 - 喵~
 + 喵～
