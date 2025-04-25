@@ -5,13 +5,12 @@ My changes
 刪除 ‘// Edit via Wikiplus’
 ``` diff
 - "default_summary_suffix":"// Edit via Wikiplus"
-+ "default_summary_suffix":""
 ```
 
 增加編輯首部章節的編輯摘要 ‘/* top */ ’
 ``` diff
 - d=p||(c?"/* ".concat(c," */ ").concat(b.translate("default_summary_suffix")):b.translate("default_summary_suffix"))
-+ d=p||((c===u)?"/* top */ ":c?"/* ".concat(c," */ "):b.translate("default_summary_suffix"))
++ d=p||((c===u)?"/* top */ ":c?"/* "+(c," */ "):"")
 ```
 .concat() Append, join strings
 
@@ -19,6 +18,7 @@ My changes
 
 ## Google Chrome 問題
 
+原
 ```
                     return e = t, n = [{
                         key: "translate",
@@ -30,51 +30,43 @@ My changes
                                     n = this.i18nData[this.language][t] :
                                     (this.loadLanguage(this.language), n = t in this.i18nData["en-us"] ?
                                         this.i18nData["en-us"][t] : t) :
-                                this.loadLanguage(this.language), e.length > 0 && e.forEach((function(t, e) {
-                                    n = n.replace("$".concat(e + 1), t)
-                                })), n
+                                this.loadLanguage(this.language),
+                            e.length > 0 && e.forEach((function(t, e) {
+                                n = n.replace("$".concat(e + 1), t)
+                            })), n
                         }
                     }
 /* If this.language in this.i18nData
   If t in this.i18nData[this.language]
     n = this.i18nData[this.language][t]
-  Else (this.loadLanguage(this.language)
-    If t in this.i18nData["en-us"]
+    Else if t in this.i18nData["en-us"]
       n = this.i18nData["en-us"][t]
-    Else n = t
-Else this.loadLanguage(this.language)
-  Return n */
+      Else n = t
+Return n */
+```
+
+改
+```
                     return e = t, n = [{
                         key: "translate",
                         value: function(t) {
                             var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : [],
                                 n = "";
-                            if (!(this.language in this.i18nData)) {
-                                this.loadLanguage(this.language);
-                            }
-                            if (this.language in this.i18nData && t in this.i18nData[this.language]) {
-                                n = this.i18nData[this.language][t];
-                            } else {
-                                if (!("en-us" in this.i18nData)) {
-                                    this.loadLanguage("en-us");
-                                }
-                                n = t in this.i18nData["en-us"] ? this.i18nData["en-us"][t] : t;
-                            }
+                            if (!(this.language in this.i18nData)) this.loadLanguage(this.language);
+                            if (this.language in this.i18nData && t in this.i18nData[this.language]) n = this.i18nData[this.language][t];
+                            else {if (!("en-us" in this.i18nData)) {this.loadLanguage("en-us");}
+                                n = t in this.i18nData["en-us"] ? this.i18nData["en-us"][t] : t;}
                             e.length > 0 && e.forEach(function(t, e) {
-                                n = n.replace("$" + (e + 1), t);
-                            });
+                                n = n.replace("$" + (e + 1), t);});
                             return n;
                         }
                     }
 /* If this.language in this.i18nData
   If t in this.i18nData[this.language]
     n = this.i18nData[this.language][t]
-  Else if "en-us" in this.i18nData
-    If t in this.i18nData["en-us"]
-      n = this.i18nData["en-us"][t]
+  Else if t in this.i18nData["en-us"]
+    n = this.i18nData["en-us"][t]
     Else n = t
-  Else this.loadLanguage("en-us")
-Else this.loadLanguage(this.language)
 Return n */
 ```
 
