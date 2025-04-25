@@ -1,5 +1,4 @@
-Special:MyPage/global.js
-
+https://meta.wikimedia.org/wiki/Special:MyPage/global.js
 ```
 /* In-page editors
 
