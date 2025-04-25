@@ -1,3 +1,7 @@
+/* Source
+https://wikiplus-app.com/Main.js
+ */
+
 /* global mw */
 /// <reference path="../typings/jquery/jquery.d.ts"/>
 /**
