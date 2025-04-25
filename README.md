@@ -25,16 +25,14 @@ My changes
                         value: function(t) {
                             var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : [],
                                 n = "";
-                            return this.language in this.i18nData
-                              ? t in this.i18nData[this.language]
-                                ? n = this.i18nData[this.language][t]
-                                : (this.loadLanguage(this.language),
-                                n = t in this.i18nData["en-us"]
-                                  ? this.i18nData["en-us"][t]
-                                  : t)
-                              : this.loadLanguage(this.language), e.length > 0 && e.forEach((function(t, e) {
+                            return this.language in this.i18nData ?
+                                t in this.i18nData[this.language] ?
+                                    n = this.i18nData[this.language][t] :
+                                    (this.loadLanguage(this.language), n = t in this.i18nData["en-us"] ?
+                                        this.i18nData["en-us"][t] : t) :
+                                this.loadLanguage(this.language), e.length > 0 && e.forEach((function(t, e) {
                                     n = n.replace("$".concat(e + 1), t)
-                                  })), n
+                                })), n
                         }
                     }
 /* If this.language in this.i18nData
