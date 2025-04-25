@@ -19,6 +19,8 @@ My changes
 
 ## 可選
 
+`"cross_page_history_revision_edit_warning":"暂不支持历史版本跨页面编辑"` 自 en-us 移至 zh-cn。
+
 ``` diff
 - 喵~
 + 喵～
