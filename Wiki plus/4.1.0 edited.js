@@ -207,7 +207,7 @@
                     o = n(5112)("species");
                 t.exports = function(t, e) {
                     var n;
-                    return i(t) && ("function" != typeof(n = t.constructor) || n !== Array && !i(n.prototype) ? r(n) && null === (n = n[o]) && (n = void 0) : n = void 0), new(void 0 === n ? Array : n)(0 === e ? 0 : e)
+                    return i(t) && ("function" != typeof(n = t.constructor) || n !== Array && !i(n.prototype) ? r(n) && null === (n = n[o]) && (n = void 0) : n = void 0), new(void 0 === n ? Array : n)(0 === e ? 0 : e);
                 };
             },
             3411: function(t, e, n) {
@@ -217,9 +217,9 @@
                         return i ? e(r(n)[0], n[1]) : e(n);
                     } catch (e) {
                         var o = t.return;
-                        throw void 0 !== o && r(o.call(t)), e
+                        throw void 0 !== o && r(o.call(t)), e;
                     }
-                }
+                };
             },
             7072: function(t, e, n) {
                 var r = n(5112)("iterator"),
@@ -230,17 +230,17 @@
                             next: function() {
                                 return {
                                     done: !!o++
-                                }
+                                };
                             },
                             return: function() {
-                                i = !0
+                                i = !0;
                             }
                         };
                     a[r] = function() {
-                        return this
+                        return this;
                     }, Array.from(a, (function() {
-                        throw 2
-                    }))
+                        throw 2;
+                    }));
                 } catch (t) {}
                 t.exports = function(t, e) {
                     if (!e && !i) return !1;
@@ -252,35 +252,35 @@
                                 next: function() {
                                     return {
                                         done: n = !0
-                                    }
+                                    };
                                 }
-                            }
-                        }, t(o)
+                            };
+                        }, t(o);
                     } catch (t) {}
-                    return n
-                }
+                    return n;
+                };
             },
             4326: function(t) {
                 var e = {}.toString;
                 t.exports = function(t) {
-                    return e.call(t).slice(8, -1)
-                }
+                    return e.call(t).slice(8, -1);
+                };
             },
             648: function(t, e, n) {
                 var r = n(1694),
                     i = n(4326),
                     o = n(5112)("toStringTag"),
                     a = "Arguments" == i(function() {
-                        return arguments
+                        return arguments;
                     }());
                 t.exports = r ? i : function(t) {
                     var e, n, r;
                     return void 0 === t ? "Undefined" : null === t ? "Null" : "string" == typeof(n = function(t, e) {
                         try {
-                            return t[e]
+                            return t[e];
                         } catch (t) {}
-                    }(e = Object(t), o)) ? n : a ? i(e) : "Object" == (r = i(e)) && "function" == typeof e.callee ? "Arguments" : r
-                }
+                    }(e = Object(t), o)) ? n : a ? i(e) : "Object" == (r = i(e)) && "function" == typeof e.callee ? "Arguments" : r;
+                };
             },
             5631: function(t, e, n) {
                 "use strict";
@@ -306,7 +306,7 @@
                                     first: void 0,
                                     last: void 0,
                                     size: 0
-                                }), f || (t.size = 0), null != r && u(r, t[s], t, n)
+                                }), f || (t.size = 0), null != r && u(r, t[s], t, n);
                             })),
                             d = v(e),
                             g = function(t, e, n) {
@@ -319,19 +319,19 @@
                                     previous: r = o.last,
                                     next: void 0,
                                     removed: !1
-                                }, o.first || (o.first = a), r && (r.next = a), f ? o.size++ : t.size++, "F" !== i && (o.index[i] = a)), t
+                                }, o.first || (o.first = a), r && (r.next = a), f ? o.size++ : t.size++, "F" !== i && (o.index[i] = a)), t;
                             },
                             m = function(t, e) {
                                 var n, r = d(t),
                                     i = p(e);
                                 if ("F" !== i) return r.index[i];
                                 for (n = r.first; n; n = n.next)
-                                    if (n.key == e) return n
+                                    if (n.key == e) return n;
                             };
                         return o(l.prototype, {
                             clear: function() {
                                 for (var t = d(this), e = t.index, n = t.first; n;) n.removed = !0, n.previous && (n.previous = n.previous.next = void 0), delete e[n.index], n = n.next;
-                                t.first = t.last = void 0, f ? t.size = 0 : this.size = 0
+                                t.first = t.last = void 0, f ? t.size = 0 : this.size = 0;
                             },
                             delete: function(t) {
                                 var e = this,
@@ -340,34 +340,34 @@
                                 if (r) {
                                     var i = r.next,
                                         o = r.previous;
-                                    delete n.index[r.index], r.removed = !0, o && (o.next = i), i && (i.previous = o), n.first == r && (n.first = i), n.last == r && (n.last = o), f ? n.size-- : e.size--
+                                    delete n.index[r.index], r.removed = !0, o && (o.next = i), i && (i.previous = o), n.first == r && (n.first = i), n.last == r && (n.last = o), f ? n.size-- : e.size--;
                                 }
-                                return !!r
+                                return !!r;
                             },
                             forEach: function(t) {
                                 for (var e, n = d(this), r = a(t, arguments.length > 1 ? arguments[1] : void 0, 3); e = e ? e.next : n.first;)
-                                    for (r(e.value, e.key, this); e && e.removed;) e = e.previous
+                                    for (r(e.value, e.key, this); e && e.removed;) e = e.previous;
                             },
                             has: function(t) {
-                                return !!m(this, t)
+                                return !!m(this, t);
                             }
                         }), o(l.prototype, n ? {
                             get: function(t) {
                                 var e = m(this, t);
-                                return e && e.value
+                                return e && e.value;
                             },
                             set: function(t, e) {
-                                return g(this, 0 === t ? 0 : t, e)
+                                return g(this, 0 === t ? 0 : t, e);
                             }
                         } : {
                             add: function(t) {
-                                return g(this, t = 0 === t ? 0 : t, t)
+                                return g(this, t = 0 === t ? 0 : t, t);
                             }
                         }), f && r(l.prototype, "size", {
                             get: function() {
-                                return d(this).size
+                                return d(this).size;
                             }
-                        }), l
+                        }), l;
                     },
                     setStrong: function(t, e, n) {
                         var r = e + " Iterator",
@@ -380,7 +380,7 @@
                                 state: i(t),
                                 kind: e,
                                 last: void 0
-                            })
+                            });
                         }), (function() {
                             for (var t = o(this), e = t.kind, n = t.last; n && n.removed;) n = n.previous;
                             return t.target && (t.last = n = n ? n.next : t.state.first) ? "keys" == e ? {
@@ -395,10 +395,10 @@
                             } : (t.target = void 0, {
                                 value: void 0,
                                 done: !0
-                            })
-                        }), n ? "entries" : "values", !n, !0), l(e)
+                            });
+                        }), n ? "entries" : "values", !n, !0), l(e);
                     }
-                }
+                };
             },
             7710: function(t, e, n) {
                 "use strict";
@@ -423,46 +423,34 @@
                         b = y,
                         A = {},
                         w = function(t) {
-                            var e = k[t];
-                            a(k, t, "add" == t ? function(t) {
-                                return e.call(this, 0 === t ? 0 : t), this
-                            } : "delete" == t ? function(t) {
-                                return !(g && !l(t)) && e.call(this, 0 === t ? 0 : t)
-                            } : "get" == t ? function(t) {
-                                return g && !l(t) ? void 0 : e.call(this, 0 === t ? 0 : t)
-                            } : "has" == t ? function(t) {
-                                return !(g && !l(t)) && e.call(this, 0 === t ? 0 : t)
-                            } : function(t, n) {
-                                return e.call(this, 0 === t ? 0 : t, n), this
-                            })
                         };
                     if (o(t, "function" != typeof y || !(g || k.forEach && !f((function() {
-                            (new y).entries().next()
+                            (new y).entries().next();
                         }))))) b = n.getConstructor(e, t, v, m), c.REQUIRED = !0;
                     else if (o(t, !0)) {
                         var x = new b,
                             I = x[m](g ? {} : -0, 1) != x,
                             C = f((function() {
-                                x.has(1)
+                                x.has(1);
                             })),
                             B = p((function(t) {
-                                new y(t)
+                                new y(t);
                             })),
                             _ = !g && f((function() {
                                 for (var t = new y, e = 5; e--;) t[m](e, e);
-                                return !t.has(-0)
+                                return !t.has(-0);
                             }));
                         B || ((b = e((function(e, n) {
                             s(e, b, t);
                             var r = h(new y, e, b);
-                            return null != n && u(n, r[m], r, v), r
-                        }))).prototype = k, k.constructor = b), (C || _) && (w("delete"), w("has"), v && w("get")), (_ || I) && w(m), g && k.clear && delete k.clear
+                            return null != n && u(n, r[m], r, v), r;
+                        }))).prototype = k, k.constructor = b), (C || _) && (w("delete"), w("has"), v && w("get")), (_ || I) && w(m), g && k.clear && delete k.clear;
                     }
                     return A[t] = b, r({
                         global: !0,
                         forced: b != y
-                    }, A), d(b, t), g || n.setStrong(b, t, v), b
-                }
+                    }, A), d(b, t), g || n.setStrong(b, t, v), b;
+                };
             },
             9920: function(t, e, n) {
                 var r = n(6656),
@@ -472,30 +460,30 @@
                 t.exports = function(t, e) {
                     for (var n = i(e), c = a.f, u = o.f, s = 0; s < n.length; s++) {
                         var l = n[s];
-                        r(t, l) || c(t, l, u(e, l))
+                        r(t, l) || c(t, l, u(e, l));
                     }
-                }
+                };
             },
             4964: function(t, e, n) {
                 var r = n(5112)("match");
                 t.exports = function(t) {
                     var e = /./;
                     try {
-                        "/./" [t](e)
+                        "/./" [t](e);
                     } catch (n) {
                         try {
-                            return e[r] = !1, "/./" [t](e)
+                            return e[r] = !1, "/./" [t](e);
                         } catch (t) {}
                     }
-                    return !1
-                }
+                    return !1;
+                };
             },
             8544: function(t, e, n) {
                 var r = n(7293);
                 t.exports = !r((function() {
                     function t() {}
                     return t.prototype.constructor = null, Object.getPrototypeOf(new t) !== t.prototype
-                }))
+                }));
             },
             4994: function(t, e, n) {
                 "use strict";
@@ -505,24 +493,24 @@
                     a = n(8003),
                     c = n(7497),
                     u = function() {
-                        return this
+                        return this;
                     };
                 t.exports = function(t, e, n) {
                     var s = e + " Iterator";
                     return t.prototype = i(r, {
                         next: o(1, n)
-                    }), a(t, s, !1, !0), c[s] = u, t
-                }
+                    }), a(t, s, !1, !0), c[s] = u, t;
+                };
             },
             8880: function(t, e, n) {
                 var r = n(9781),
                     i = n(3070),
                     o = n(9114);
                 t.exports = r ? function(t, e, n) {
-                    return i.f(t, e, o(1, n))
+                    return i.f(t, e, o(1, n));
                 } : function(t, e, n) {
-                    return t[e] = n, t
-                }
+                    return t[e] = n, t;
+                };
             },
             9114: function(t) {
                 t.exports = function(t, e) {
@@ -531,8 +519,8 @@
                         configurable: !(2 & t),
                         writable: !(4 & t),
                         value: e
-                    }
-                }
+                    };
+                };
             },
             6135: function(t, e, n) {
                 "use strict";
@@ -541,8 +529,8 @@
                     o = n(9114);
                 t.exports = function(t, e, n) {
                     var a = r(e);
-                    a in t ? i.f(t, a, o(0, n)) : t[a] = n
-                }
+                    a in t ? i.f(t, a, o(0, n)) : t[a] = n;
+                };
             },
             654: function(t, e, n) {
                 "use strict";
