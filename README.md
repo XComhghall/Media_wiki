@@ -27,7 +27,6 @@ My changes
 # Wiki plus 2.3.11
 
 刪除 ‘// Edit via Wikiplus’
-
 ``` diff
 if (summary === undefined) {
   if (sectionName === undefined) {
