@@ -28,6 +28,12 @@ My changes
 
 刪除 ‘// Edit via Wikiplus’
 ``` diff
+- "default_summary_suffix": "// Edit via Wikiplus",
++ "default_summary_suffix": "",
+```
+
+增加編輯首部章節的編輯摘要 ‘/* top */ ’
+``` diff
 if (summary === undefined) {
   if (sectionName === undefined) {
     summary = i18n('default_summary_suffix');
