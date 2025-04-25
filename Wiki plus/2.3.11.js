@@ -212,7 +212,7 @@ $(function () {
         "history_edit_warning": " // 正试图编辑历史版本 这将会应用到本页面的最新版本 请慎重提交",
         "create_page_tip": "<!-- 正在创建新页面 请删去此行注释后继续 -->",
         "continue": "仍然继续",
-        "default_summary_suffix": "",
+        "default_summary_suffix": "// Edit via Wikiplus",
         'cross_page_history_revision_edit_warning': '暂不支持历史版本跨页面编辑'
     };
     i18nData['en-us'] = {
@@ -326,7 +326,7 @@ $(function () {
         "history_edit_warning": " // You are trying to edit a history revision of this page. This will apply to the latest revision. Please be careful.",
         "create_page_tip": "<!-- You are now creating a new page. Please delete this line and be careful. -->",
         "continue": "Continue anyway",
-        "default_summary_suffix": "",
+        "default_summary_suffix": "// Edit via Wikiplus",
         "cross_page_history_revision_edit_warning": "Cross-page edit in history revision is not supported yet."
     };
 
@@ -1160,11 +1160,11 @@ $(function () {
                     });
                     if (summary === undefined) {
                         if (sectionName === undefined) {
-                            summary = i18n('default_summary_suffix');
+                            summary = '';
                         } else if (sectionName === sectionTargetName) {
-                            summary = '/* top */ ' + i18n('default_summary_suffix');
+                            summary = '/* top */ ';
                         } else {
-                            summary = '/* ' + sectionName + ' */ ' + i18n('default_summary_suffix');
+                            summary = '/* ' + sectionName + ' */ ';
                         }
                     }
                     //DOM定义
@@ -1788,7 +1788,7 @@ $(function () {
                 this.inValidNameSpaces = [-1, 8964];
                 this.defaultSettings = {
                     'key': 'value',
-                    'documentation': 'https://zh.moegirl.org.cn/User:%E5%A6%B9%E7%A9%BA%E9%85%B1/Wikiplus/%E8%AE%BE%E7%BD%AE%E8%AF%B4%E6%98%8E'
+                    'documentation': 'https://zh.moegirl.org.cn/User:妹空酱/Wikiplus/设置说明'
                 };
                 console.log('正在加载Wikiplus ' + this.version);
                 //载入CSS
