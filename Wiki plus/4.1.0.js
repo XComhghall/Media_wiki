@@ -1,3 +1,9 @@
+/* Source
+https://cdn.jsdelivr.net/npm/wikiplus-core
+https://cdn.jsdelivr.net/npm/wikiplus-core@latest/dist/Main.js
+https://cdn.jsdelivr.net/npm/wikiplus-core@4.1.0/dist/Main.js
+ */
+
 /**
  * Skipped minification because the original files appears to be already minified.
  * Original file: /npm/wikiplus-core@4.1.0/dist/Main.js
