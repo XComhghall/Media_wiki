@@ -6,6 +6,8 @@
 ``` diff
 - d=p||(c?"/* ".concat(c," */ ").concat(b.translate("default_summary_suffix")):b.translate("default_summary_suffix"))
 + d=p||((c===u)?"/* top */ ":c?"/* "+(c," */ "):"")
+- d = p || (c ? "/* ".concat(c, " */ ").concat(b.translate("default_summary_suffix")) : b.translate("default_summary_suffix"))
++ d = p || ((c === u) ? "/* top */ " : c ? "/* " + (c, " */ ") : "")
 ```
 .concat() Append, join strings
 
@@ -70,6 +72,7 @@ Return n */
 `"cross_page_history_revision_edit_warning":"暂不支持历史版本跨页面编辑"` 自 en-us 移至 zh-cn。
 
 ``` diff
++ "cross_page_history_revision_edit_warning":"Cross-page edit in history revision is not supported yet"
 - 喵~
 + 喵～
 ```
@@ -96,6 +99,8 @@ if (summary === undefined) {
 ``` diff
 - 喵~
 + 喵～
+- 'cross_page_history_revision_edit_warning': '暂不支持历史版本跨页面编辑'
++ "cross_page_history_revision_edit_warning": "暂不支持历史版本跨页面编辑"
 - 'documatation': 'https://zh.moegirl.org.cn/User:%E5%A6%B9%E7%A9%BA%E9%85%B1/Wikiplus/%E8%AE%BE%E7%BD%AE%E8%AF%B4%E6%98%8E'
 + 'documentation': 'https://zh.moegirl.org.cn/User:妹空酱/Wikiplus/设置说明'
 ```
