@@ -10,7 +10,7 @@ My changes
 
 ``` diff
 - d=p||(c?"/* ".concat(c," */ ").concat(b.translate("default_summary_suffix")):b.translate("default_summary_suffix"))
-+ d=p||((c===u)? "/* top */ ":c?"/* ".concat(c," */ "):b.translate("default_summary_suffix"))
++ d=p||((c===u)?"/* top */ ":c?"/* ".concat(c," */ "):b.translate("default_summary_suffix"))
 ```
 增加編輯首部章節的編輯摘要 ‘/* top */ ’
 
