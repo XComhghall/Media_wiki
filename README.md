@@ -17,6 +17,69 @@ My changes
 
 ? : If, else
 
+## Google Chrome 問題
+
+```
+                    return e = t, n = [{
+                        key: "translate",
+                        value: function(t) {
+                            var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : [],
+                                n = "";
+                            return this.language in this.i18nData
+                              ? t in this.i18nData[this.language]
+                                ? n = this.i18nData[this.language][t]
+                                : (this.loadLanguage(this.language),
+                                n = t in this.i18nData["en-us"]
+                                  ? this.i18nData["en-us"][t]
+                                  : t)
+                              : this.loadLanguage(this.language), e.length > 0 && e.forEach((function(t, e) {
+                                    n = n.replace("$".concat(e + 1), t)
+                                  })), n
+                        }
+                    }
+/* If this.language in this.i18nData
+  If t in this.i18nData[this.language]
+    n = this.i18nData[this.language][t]
+  Else (this.loadLanguage(this.language)
+    If t in this.i18nData["en-us"]
+      n = this.i18nData["en-us"][t]
+    Else n = t
+Else this.loadLanguage(this.language)
+  Return n */
+                    return e = t, n = [{
+                        key: "translate",
+                        value: function(t) {
+                            var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : [],
+                                n = "";
+                            if (!(this.language in this.i18nData)) {
+                                this.loadLanguage(this.language);
+                            }
+                            if (this.language in this.i18nData && t in this.i18nData[this.language]) {
+                                n = this.i18nData[this.language][t];
+                            } else {
+                                if (!("en-us" in this.i18nData)) {
+                                    this.loadLanguage("en-us");
+                                }
+                                n = t in this.i18nData["en-us"] ? this.i18nData["en-us"][t] : t;
+                            }
+                            e.length > 0 && e.forEach(function(t, e) {
+                                n = n.replace("$" + (e + 1), t);
+                            });
+                            return n;
+                        }
+                    }
+/* If this.language in this.i18nData
+  If t in this.i18nData[this.language]
+    n = this.i18nData[this.language][t]
+  Else if "en-us" in this.i18nData
+    If t in this.i18nData["en-us"]
+      n = this.i18nData["en-us"][t]
+    Else n = t
+  Else this.loadLanguage("en-us")
+Else this.loadLanguage(this.language)
+Return n */
+```
+
 ## 可選
 
 `"cross_page_history_revision_edit_warning":"暂不支持历史版本跨页面编辑"` 自 en-us 移至 zh-cn。
