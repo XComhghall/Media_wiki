@@ -1,18 +1,23 @@
-/* Source
+/* Wiki plus 2.3.11
+ * Source
 https://wikiplus-app.com/Main.js
  */
 
 /* global mw */
+
 /// <reference path="../typings/jquery/jquery.d.ts"/>
+
 /**
  * Wikiplus
  * Author: +Eridanus Sora/@妹空酱
  * Github: https://github.com/Last-Order/Wikiplus
  */
+
 /**
  * 依赖组件: MoeNotification
  * https://github.com/Last-Order/MoeNotification
  */
+
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
