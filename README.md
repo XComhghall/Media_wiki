@@ -2,7 +2,9 @@
 
 自訂更改
 
-## Google Chrome 問題
+## Google Chrome
+
+Google Chrome 上 Wiki plus 文字不顯示的問題。更改後 Firefox, Google Chrome 皆適用。
 
 原
 ``` js
@@ -51,12 +53,61 @@ Return n */
 Return n */
 ```
 
+## Miraheze
+
+Miraheze 章節無 quick edit 連結／按鈕的問題。原因爲 Mira Heze 之 .mw-editsection 之 a 之 href 爲 `/wiki/標題?veaction=edit&section=1`，Wiki media 爲 `https://zh.wikipedia.org/w/index.php?title=標題&section=1&veaction=editsource`。
+
+``` diff
+                    }, {
+                        key: "insertSectionQuickEditEntries",
+                        value: function() {
+                            var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : function() {},
+                                e = r.skin === "minerva" ? $("<span>").append($("<a>").addClass("Wikiplus-Edit-SectionBtn mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right").css("margin-left", "0.75em").attr("href", "javascript:void(0)").attr("title", b.translate("quickedit_sectionbtn"))) : $("<span>").append($("<span>").addClass("mw-editsection-divider").text(" | ")).append($("<a>").addClass("Wikiplus-Edit-SectionBtn").attr("href", "javascript:void(0)").text(b.translate("quickedit_sectionbtn")));
+                            $(".mw-editsection").each(function(n) {
+                                try {
+                                    var i = $(this).find("a[href*='action=edit']").first().attr("href"),
+                                        o = i.match(/&[ve]*section=([^&]+)/)[1].replace(/T-/gi, ""),
+-                                       a = decodeURIComponent(i.match(/title=([^&]+)/)[1]),
++                                       a = decodeURIComponent(i.match(/^\/wiki\/([^?]+)/)[1]),
+                                        c = $(this).prev().clone();
+                                    c.find(".mw-headline-number").remove();
+                                    var u = c.text().trim(),
+                                        s = e.clone();
+                                    s.find(".Wikiplus-Edit-SectionBtn").on("click", function() {
+                                        t({
+                                            sectionNumber: o,
+                                            sectionName: u,
+                                            targetPageName: a
+                                        });
+                                    }); r.skin === "minerva" ? $(this).append(s) : $(this).find(".mw-editsection-bracket").last().before(s);
+                                } catch (t) {
+                                    j.error("fail_to_init_quickedit");
+                                }
+                            });
+                        }
+                    }, {
+```
+
+May try if else for both Wiki media and Mira Heze
+```
+const WikimediaDomains = [
+    'wikipedia.org',
+    'wikimedia.org',
+    'wikisource.org',
+    'wiktionary.org',
+    'wikiquote.org'
+];
+if (WikimediaDomains.some(domain => window.location.hostname.includes(domain))) {
+} else {
+}
+```
+
 ## 可選
 
 增加編輯首部章節的編輯摘要 ‘/* top */ ’
 ``` diff
 - d = p || (c ? "/* ".concat(c, " */ ").concat(b.translate("default_summary_suffix")) : b.translate("default_summary_suffix"))
-+ d = p || ((c === u) ? "/* top */ " : c ? "/* " + (c, " */ ") : "")
++ d = p || (c === u ? "/* top */ " : c ? "/* " + (c, " */ ") : "")
 ```
 .concat() Append, join strings
 
