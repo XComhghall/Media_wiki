@@ -6297,7 +6297,7 @@ https://www.jsdelivr.com/using-sri-with-dynamic-files
                                                     sectionName: c,
                                                     sectionNumber: a,
                                                     sectionTargetName: u
-                                                }), d = p || ((c === u) ? "/* top */ " : c ? "/* " + (c, " */ ") : ""), h = setTimeout((function() {
+                                                }), d = p || (c == u ? "/* top */ " : c ? "/* " + c + " */ " : ""), h = setTimeout((function() {
                                                     K.success(b.translate("loading"))
                                                 }), 200), t.next = 21, f.getWikiText({
                                                     section: a
