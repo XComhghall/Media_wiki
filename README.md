@@ -107,7 +107,7 @@ if (WikimediaDomains.some(domain => window.location.hostname.includes(domain))) 
 增加編輯首部章節的編輯摘要 ‘/* top */ ’
 ``` diff
 - d = p || (c ? "/* ".concat(c, " */ ").concat(b.translate("default_summary_suffix")) : b.translate("default_summary_suffix"))
-+ d = p || (c === u ? "/* top */ " : c ? "/* " + (c, " */ ") : "")
++ d = p || (c == u ? "/* top */ " : c ? "/* " + c + " */ " : "")
 ```
 .concat() Append, join strings
 
