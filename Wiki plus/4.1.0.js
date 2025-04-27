@@ -5801,27 +5801,27 @@ https://www.jsdelivr.com/using-sri-with-dynamic-files
                         key: "insertSectionQuickEditEntries",
                         value: function() {
                             var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : function() {},
-                                e = "minerva" === r.skin ? $("<span>").append($("<a>").addClass("Wikiplus-Edit-SectionBtn mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right").css("margin-left", "0.75em").attr("href", "javascript:void(0)").attr("title", b.translate("quickedit_sectionbtn"))) : $("<span>").append($("<span>").addClass("mw-editsection-divider").text(" | ")).append($("<a>").addClass("Wikiplus-Edit-SectionBtn").attr("href", "javascript:void(0)").text(b.translate("quickedit_sectionbtn")));
-                            $(".mw-editsection").each((function(n) {
+                                e = r.skin === "minerva" ? $("<span>").append($("<a>").addClass("Wikiplus-Edit-SectionBtn mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right").css("margin-left", "0.75em").attr("href", "javascript:void(0)").attr("title", b.translate("quickedit_sectionbtn"))) : $("<span>").append($("<span>").addClass("mw-editsection-divider").text(" | ")).append($("<a>").addClass("Wikiplus-Edit-SectionBtn").attr("href", "javascript:void(0)").text(b.translate("quickedit_sectionbtn")));
+                            $(".mw-editsection").each(function(n) {
                                 try {
                                     var i = $(this).find("a[href*='action=edit']").first().attr("href"),
-                                        o = i.match(/&[ve]*section\=([^&]+)/)[1].replace(/T-/gi, ""),
-                                        a = decodeURIComponent(i.match(/title=(.+?)&/)[1]),
+                                        o = i.match(/&[ve]*section=([^&]+)/)[1].replace(/T-/gi, ""),
+                                        a = decodeURIComponent(i.match(/title=([^&]+)/)[1]),
                                         c = $(this).prev().clone();
                                     c.find(".mw-headline-number").remove();
                                     var u = c.text().trim(),
                                         s = e.clone();
-                                    s.find(".Wikiplus-Edit-SectionBtn").on("click", (function() {
+                                    s.find(".Wikiplus-Edit-SectionBtn").on("click", function() {
                                         t({
                                             sectionNumber: o,
                                             sectionName: u,
                                             targetPageName: a
-                                        })
-                                    })), "minerva" === r.skin ? $(this).append(s) : $(this).find(".mw-editsection-bracket").last().before(s)
+                                        });
+                                    }); r.skin === "minerva" ? $(this).append(s) : $(this).find(".mw-editsection-bracket").last().before(s);
                                 } catch (t) {
-                                    j.error("fail_to_init_quickedit")
+                                    j.error("fail_to_init_quickedit");
                                 }
-                            }))
+                            });
                         }
                     }, {
                         key: "insertLinkEditEntries",
