@@ -108,6 +108,7 @@ if (WikimediaDomains.some(domain => window.location.hostname.includes(domain))) 
 ``` diff
 - d = p || (c ? "/* ".concat(c, " */ ").concat(b.translate("default_summary_suffix")) : b.translate("default_summary_suffix"))
 + d = p || (c == u ? "/* top */ " : c ? "/* " + c + " */ " : "")
++ d = p || (c == u ? "/* top */ " : c ? `/* ${c} */ ` : "") // Template literal. Not yet attempted.
 ```
 .concat() Append, join strings
 
