@@ -55,7 +55,7 @@ Return n */
 
 ## Miraheze
 
-Miraheze 章節無 quick edit 連結／按鈕的問題。原因爲 Mira Heze 之 .mw-editsection 之 a 之 href 爲 `/wiki/標題?veaction=edit&section=1`，Wiki media 爲 `https://zh.wikipedia.org/w/index.php?title=標題&section=1&veaction=editsource`。
+Miraheze 章節無 ‘quick edit’ 連結、按鈕的問題。原因爲 Mira Heze `.mw-editsection` `<a>` 之 href 爲 `/wiki/標題?veaction=edit&section=1`，Wiki media 爲 `https://zh.wikipedia.org/w/index.php?title=標題&section=1&veaction=editsource`。
 
 ``` diff
                     }, {
@@ -104,11 +104,11 @@ if (WikimediaDomains.some(domain => window.location.hostname.includes(domain))) 
 
 ## 可選
 
-增加編輯首部章節的編輯摘要 ‘/* top */ ’
+增加編輯首部、序言的編輯摘要 `/* top */ `
 ``` diff
 - d = p || (c ? "/* ".concat(c, " */ ").concat(b.translate("default_summary_suffix")) : b.translate("default_summary_suffix"))
-+ d = p || (c == u ? "/* top */ " : c ? "/* " + c + " */ " : "")
-+ d = p || (c == u ? "/* top */ " : c ? `/* ${c} */ ` : "") // Template literal. Not yet attempted.
++ d = p || (a > 0 ? "/* " + c + " */ " : c ? "/* top */ " : "")
++ d = p || (a > 0 ? `/* ${c} */ ` : c ? "/* top */ " : "")
 ```
 .concat() Append, join strings
 
