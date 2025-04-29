@@ -75,6 +75,64 @@
             function ut(t, e) {
 // …
             }
+            var st = function() { // 6139
+                    function t() {
+                        ! function(t, e) {
+                            if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function")
+                        }(this, t)
+                    }
+                    var e, n, r;
+                    return e = t, n = [{
+                        key: "getSetting",
+                        value: function(t) {
+                            var e, n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
+                                r = n;
+                            try {
+                                e = JSON.parse(localStorage.Wikiplus_Settings)
+                            } catch (t) {
+                                return
+                            }
+                            try {
+                                var i = new Function("return " + e[t]);
+                                if ("function" != typeof i) return e[t];
+                                try {
+                                    return !0 === i()(r) ? void 0 : i()(r) || e[t]
+                                } catch (n) {
+                                    return e[t]
+                                }
+                            } catch (r) {
+                                try {
+                                    for (var o = e[t], a = 0, c = Object.keys(n); a < c.length; a++) {
+                                        var u = c[a];
+                                        o = o.replace("${".concat(u, "}"), n[u])
+                                    }
+                                    return o
+                                } catch (t) {
+                                    return
+                                }
+                            }
+                        }
+                    }], n && ut(e.prototype, n), r && ut(e, r), Object.defineProperty(e, "prototype", {
+                        writable: !1
+                    }), t
+                }(),
+                lt = new st,
+                ft = n(3379),
+                pt = n.n(ft),
+                dt = n(7795),
+                ht = n.n(dt),
+                vt = n(569),
+                gt = n.n(vt),
+                mt = n(3565),
+                yt = n.n(mt),
+                kt = n(9216),
+                bt = n.n(kt),
+                At = n(4589),
+                wt = n.n(At),
+                xt = n(9183),
+                It = {};
+            It.styleTagTransform = wt(), It.setAttributes = yt(), It.insert = gt().bind(null, "head"), It.domAPI = ht(), It.insertStyleElement = bt();
+            pt()(xt.Z, It), xt.Z && xt.Z.locals && xt.Z.locals;
 // …
             $(Ot(regeneratorRuntime.mark((function t() { // 6213
                 var e, n, i, o, a, c, u, s, l, f;
@@ -136,30 +194,28 @@
 
 //# sourceMappingURL=Main.js.map // 6445 end
 
-So I have tried changing `d = p || (c == u ? "/* top */ " : c ? "/* " + c + " */ " : "")` to `d = p || ("Section: " + c + "Title: " + u)`
+I have tried changing `d = p || (c == u ? "/* top */ " : c ? "/* " + c + " */ " : "")` to `d = p || ("Section: " + c + " Title: " + u)`.
 
 And also the user custom settings, which I believe is the Wikiplus_Settings:
 ```
 {
-	"defaultSummary" : "function(anything) {return 'Section: ' + anything.sectionName + 'Title: ' + mw.config.get('wgTitle')}"
+	"defaultSummary" : "function(anything) {return 'Section: ' + anything.sectionName + ' Title: ' + mw.config.get('wgTitle')}"
 }
 ```
 
 The results are the same.
 
-When editing an entire page, the default summary in the Wikiplus editor:
-Section: undefinedTitle: 音乐
+The default summary in the Wikiplus editor when editoring
++ An entire page,
++ The lead section (top), and
++ The section '理論' (in fact 理论 in wikitext and URL anchor ID):
+```
+Section: undefined Title: 音乐
+Section: 音樂 Title: 音乐
+Section: 理論 Title: 音乐
+```
 
-Lead section (top):
-Section: 音樂Title: 音乐
-
-The section '理論' (in fact 理论 in wikitext and URL anchor ID):
-Section: 理論Title: 音乐
-
-On User:Name/sandbox however, I tried to change the display title with wikitext:
-{{DISPLAYTITLE: <span style = 'color: transparent; font-size: 0'>Hidden</span>Text}}
-And equivalently,
--{T | <span style = 'color: transparent; font-size: 0'>Hidden</span>Text}-
+On User:Name/sandbox, I changed the display title with wikitext `{{DISPLAYTITLE: <span style = 'color: transparent; font-size: 0'>Hidden</span>Text}}`, and equivalently, `-{T | <span style = 'color: transparent; font-size: 0'>Hidden</span>Text}-`.
 
 It turns out that on both Miraheze and Wikipedia, `Text` is not surrounded by any tag. It becomes
 ```
@@ -171,11 +227,13 @@ It turns out that on both Miraheze and Wikipedia, `Text` is not surrounded by an
 ```
 
 Wikiplus default summary:
+```
 Section: undefinedTitle: Name/sandbox
 Section: HiddenTitle: Name/sandbox
 Section: 測試Title: Name/sandbox
+```
 
-This leads me to believe that the c, a, u, anything.sectionName is from the
+This leads me to believe that c, a, u, anything.sectionName get the section name and number, and the page name from the insertSectionQuickEditEntries code:
 ```
 var o = i.match(/&[ve]*section=([^&]+)/)[1].replace(/T-/gi, ""),
     a = decodeURIComponent(i.match(/^\/wiki\/([^?]+)/)[1]),
@@ -183,8 +241,5 @@ var o = i.match(/&[ve]*section=([^&]+)/)[1].replace(/T-/gi, ""),
 c.find(".mw-headline-number").remove();
 var u = c.text().trim();
 ```
-earlier.
 
-But how?
-
-And how is it that I can name `function(anything) {… anything.sectionName …}` to anything?
+How is it that I can name `function(anything) {… anything.sectionName …}` to anything?
