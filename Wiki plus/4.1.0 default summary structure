@@ -1,0 +1,190 @@
+! function() { // line 14 begin
+    var t = {
+// …
+        }, // 4488
+        e = {};
+
+    function n(r) {
+// …
+    }
+    n.n = function(t) { // 4500
+            var e = t && t.__esModule ? function() {
+                return t.default
+            } : function() {
+                return t
+            };
+            return n.d(e, {
+                a: e
+            }), e
+        },
+// …
+        n.o = function(t, e) {
+            return Object.prototype.hasOwnProperty.call(t, e)
+        },
+        function() { // 4524
+            "use strict";
+            n(6699), n(2023), n(2222), n(9600), n(4916), n(5306), n(1539), n(8674), n(9070), n(7941), n(2526), n(7327), n(5003), n(4747), n(9337), n(3321), n(5666), n(6992), n(8783), n(3948), n(285), n(1637), n(9720), n(1817), n(2165), n(7042), n(8309), n(1038);
+
+            function t(t, e) {
+// …
+            }
+// …
+            var at = function() { // 5697
+                    function t() {
+                        ! function(t, e) {
+                            if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function")
+                        }(this, t), ot(this, "quickEditPanelVisible", !1), ot(this, "scrollTop", 0)
+                    }
+                    var e, n, i;
+                    return e = t, n = [{
+// …
+                    }, { // 5800
+                        key: "insertSectionQuickEditEntries",
+                        value: function() {
+                            var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : function() {},
+                                e = r.skin === "minerva" ? $("<span>").append($("<a>").addClass("Wikiplus-Edit-SectionBtn mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right").css("margin-left", "0.75em").attr("href", "javascript:void(0)").attr("title", b.translate("quickedit_sectionbtn"))) : $("<span>").append($("<span>").addClass("mw-editsection-divider").text(" | ")).append($("<a>").addClass("Wikiplus-Edit-SectionBtn").attr("href", "javascript:void(0)").text(b.translate("quickedit_sectionbtn")));
+                            $(".mw-editsection").each(function(n) {
+                                try {
+                                    var i = $(this).find("a[href*='action=edit']").first().attr("href"),
+                                        o = i.match(/&[ve]*section=([^&]+)/)[1].replace(/T-/gi, ""),
+                                        a = decodeURIComponent(i.match(/^\/wiki\/([^?]+)/)[1]),
+                                        c = $(this).prev().clone();
+                                    c.find(".mw-headline-number").remove();
+                                    var u = c.text().trim(),
+                                        s = e.clone();
+                                    s.find(".Wikiplus-Edit-SectionBtn").on("click", function() {
+                                        t({
+                                            sectionNumber: o,
+                                            sectionName: u,
+                                            targetPageName: a
+                                        });
+                                    }); r.skin === "minerva" ? $(this).append(s) : $(this).find(".mw-editsection-bracket").last().before(s);
+                                } catch (t) {
+                                    j.error("fail_to_init_quickedit");
+                                }
+                            });
+                        }
+                    }, {
+// …
+                    }], n && it(e.prototype, n), i && it(e, i), Object.defineProperty(e, "prototype", { // 6082
+                        writable: !1
+                    }), t
+                }(),
+                ct = new at;
+
+            function ut(t, e) {
+// …
+            }
+// …
+            $(Ot(regeneratorRuntime.mark((function t() { // 6213
+                var e, n, i, o, a, c, u, s, l, f;
+                return regeneratorRuntime.wrap((function(t) {
+                    for (;;) switch (t.prev = t.next) {
+// …
+                        case 19: // 6267
+                            c = t.sent, u = function() {
+                                var t = Ot(regeneratorRuntime.mark((function t() {
+                                    var e, a, c, u, s, l, f, p, d, h, v, g, m, y, k, A, w, x = arguments;
+                                    return regeneratorRuntime.wrap((function(t) {
+                                        for (;;) switch (t.prev = t.next) {
+// …
+                                            case 15: // 6295
+                                                return f = t.sent, p = lt.getSetting("defaultSummary", {
+                                                    sectionName: c,
+                                                    sectionNumber: a,
+                                                    sectionTargetName: u
+                                                }), d = p || (c == u ? "/* top */ " : c ? "/* " + c + " */ " : ""), h = setTimeout((function() {
+                                                    K.success(b.translate("loading"))
+                                                }), 200), t.next = 21, f.getWikiText({
+                                                    section: a
+                                                });
+                                        }
+                                    }), t)
+                                })));
+                                return function() {
+                                    return t.apply(this, arguments)
+                                }
+                            }(), s = function() {
+// …
+                            }(), f = function() { // 6417
+                                var t = Ot(regeneratorRuntime.mark((function t(e) {
+                                    var n;
+                                    return regeneratorRuntime.wrap((function(t) {
+                                        for (;;) switch (t.prev = t.next) {
+                                            case 0:
+                                                return n = e.sectionNumber, t.next = 3, c.getWikiText({
+                                                    section: n
+                                                });
+                                            case 3:
+                                            case "end":
+                                                return t.stop()
+                                        }
+                                    }), t)
+                                })));
+                                return function(e) {
+                                    return t.apply(this, arguments)
+                                }
+                            }(), ct.insertTopQuickEditEntry(u), ct.insertSectionQuickEditEntries(u), ct.insertLinkEditEntries(u), ct.insertSimpleRedirectButton(s), ct.insertSettingsPanelButton(l), ct.bindPreloadEvents(f);
+                        case 30:
+                        case "end":
+                            return t.stop()
+                    }
+                }), t)
+            }))))
+        }()
+}();
+
+//# sourceMappingURL=Main.js.map // 6445 end
+
+So I have tried changing `d = p || (c == u ? "/* top */ " : c ? "/* " + c + " */ " : "")` to `d = p || ("Section: " + c + "Title: " + u)`
+
+And also the user custom settings, which I believe is the Wikiplus_Settings:
+```
+{
+	"defaultSummary" : "function(anything) {return 'Section: ' + anything.sectionName + 'Title: ' + mw.config.get('wgTitle')}"
+}
+```
+
+The results are the same.
+
+When editing an entire page, the default summary in the Wikiplus editor:
+Section: undefinedTitle: 音乐
+
+Lead section (top):
+Section: 音樂Title: 音乐
+
+The section '理論' (in fact 理论 in wikitext and URL anchor ID):
+Section: 理論Title: 音乐
+
+On User:Name/sandbox however, I tried to change the display title with wikitext:
+{{DISPLAYTITLE: <span style = 'color: transparent; font-size: 0'>Hidden</span>Text}}
+And equivalently,
+-{T | <span style = 'color: transparent; font-size: 0'>Hidden</span>Text}-
+
+It turns out that on both Miraheze and Wikipedia, `Text` is not surrounded by any tag. It becomes
+```
+<h1>
+    <span style="color: transparent; font-size: 0">Hidden</span>
+    Text
+    <span class="mw-editsection"> … </span>
+</h1>
+```
+
+Wikiplus default summary:
+Section: undefinedTitle: Name/sandbox
+Section: HiddenTitle: Name/sandbox
+Section: 測試Title: Name/sandbox
+
+This leads me to believe that the c, a, u, anything.sectionName is from the
+```
+var o = i.match(/&[ve]*section=([^&]+)/)[1].replace(/T-/gi, ""),
+    a = decodeURIComponent(i.match(/^\/wiki\/([^?]+)/)[1]),
+    c = $(this).prev().clone();
+c.find(".mw-headline-number").remove();
+var u = c.text().trim();
+```
+earlier.
+
+But how?
+
+And how is it that I can name `function(anything) {… anything.sectionName …}` to anything?
